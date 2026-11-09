@@ -1,6 +1,6 @@
 # Student-CI-Project
 
-A small Python calculator used to demonstrate Continuous Integration (CI)
+In-Class assignment
 with Jenkins and GitHub webhooks (CMSC 426, In-Class Activity 3).
 
 ## Repository layout
@@ -22,12 +22,15 @@ Student-CI-Project/
 
 ## Requirements
 
-- Python 3.8 or newer (standard library only; no packages to install)
+- Python 3.8 or newer
 
 ## Run the application
 
 ```
 python -m app.calculator
+```
+```
+python3 -m app.calculator
 ```
 
 ## Run the tests
@@ -37,17 +40,17 @@ From the repository root:
 ```
 python -m unittest discover -s tests -t . -v
 ```
+```
+python3 -m unittest discover -s tests -t . -v
+```
 
-All 6 tests should pass. The command exits with a non-zero code if any
+All 6 tests should pass. if any
 test fails, which is what makes the Jenkins build fail.
 
 ## Continuous Integration
 
-The Jenkins Freestyle job **Student-CI-Project**:
 
-1. Pulls this repository from GitHub (branch `main`).
+1. Pulls this repo from GitHub.
 2. Is triggered by a GitHub webhook on every push
-   (`GitHub hook trigger for GITScm polling`).
-3. Runs `ci\build.bat` (Windows) or `ci/build.sh` (macOS/Linux), which
-   syntax-checks the code, runs the app, and runs the unit tests.
+3. Runs  `ci/build.sh`, which syntax-checks the code, runs the app, and runs the unit tests.
 4. Marks the build **FAILED** if any test fails.
